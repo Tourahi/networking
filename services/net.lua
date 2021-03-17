@@ -69,4 +69,6 @@ net.update = function(self)
   end
 end
 
+net.hellrr = 'lol';
+
 return net;

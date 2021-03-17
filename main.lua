@@ -1,4 +1,5 @@
 local net_service = require('services.net');
+local entity_service = require('services.net');
 
 
 function love.load(arg)

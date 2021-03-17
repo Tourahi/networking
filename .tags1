@@ -1,0 +1,9 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+entity_service.spawn	/home/maro/Git/Lua/Network/networkingDedicatedServer/services/entity.lua	/^function entity_service.spawn(player_id, x, y, speed)$/;"	function	line:6
+entity_service.draw	/home/maro/Git/Lua/Network/networkingDedicatedServer/services/entity.lua	/^function entity_service.draw(entity)$/;"	function	line:17
+entity_service.move	/home/maro/Git/Lua/Network/networkingDedicatedServer/services/entity.lua	/^function entity_service.move(player_id, x, y)$/;"	function	line:30

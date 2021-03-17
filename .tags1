@@ -4,6 +4,8 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-entity_service.spawn	/home/maro/Git/Lua/Network/networkingDedicatedServer/services/entity.lua	/^function entity_service.spawn(player_id, x, y, speed)$/;"	function	line:6
-entity_service.draw	/home/maro/Git/Lua/Network/networkingDedicatedServer/services/entity.lua	/^function entity_service.draw(entity)$/;"	function	line:17
-entity_service.move	/home/maro/Git/Lua/Network/networkingDedicatedServer/services/entity.lua	/^function entity_service.move(player_id, x, y)$/;"	function	line:30
+menu_service.load	/home/maro/Git/Lua/Network/networkingDedicatedServer/services/menu.lua	/^function menu_service.load(menu_name)$/;"	function	line:13
+type(menu_factory) 	/home/maro/Git/Lua/Network/networkingDedicatedServer/services/menu.lua	/^    type(menu_factory) == 'function',$/;"	function	line:20
+menu_factory , but got' .. type	/home/maro/Git/Lua/Network/networkingDedicatedServer/services/menu.lua	/^    'Expected a function menu_factory , but got' .. type(menu_factory)$/;"	function	line:21
+menu_service.unload	/home/maro/Git/Lua/Network/networkingDedicatedServer/services/menu.lua	/^function menu_service.unload()$/;"	function	line:33
+menu_service.update	/home/maro/Git/Lua/Network/networkingDedicatedServer/services/menu.lua	/^function menu_service.update()$/;"	function	line:37

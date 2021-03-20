@@ -1,13 +1,13 @@
 return function(menu)
-  local last_active = 1;
-  for i,elem in ipairs(manu.elements) do
-    if elem == menu.active_element then
-      last_active = i;
+  local active_element_idx = 1
+  for idx, element in ipairs(menu.elements) do
+    if element == menu.active_element then
+      active_element_idx = idx
     end
   end
-  if last_active == 1 then
-    menu.active_menu = menu.elements[#menu.elements];
+  if active_element_idx == 1 then
+    menu.active_element = menu.elements[#menu.elements]
   else
-    menu.active_menu = menu.elements[last_active - 1];
+    menu.active_element = menu.elements[active_element_idx - 1]
   end
 end

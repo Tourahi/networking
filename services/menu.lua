@@ -3,10 +3,11 @@ local menu_service = {};
 local window_width, window_height = love.graphics.getDimensions();
 
 -- List of menus
+
 local menus = {
   ['main-menu'] = require('menus.main-menu'),
   ['client-lobby'] = require('menus.client-lobby'),
-  ['server-lobby'] = require('menus.server-lobby')
+  ['server-lobby'] = require('menus.server-lobby'),
 };
 
 -- the loaded menu table
@@ -23,8 +24,9 @@ function menu_service.load(menu_name)
     'Expected a function menu_factory , but got' .. type(menu_factory)
   );
   local menu = menu_factory();
-  type(menu) == 'table',
-  'Expecting menu to return a table, but got ' .. type(menu)
+  assert(
+    type(menu) == 'table',
+    'Expecting menu to return a table, but got ' .. type(menu)
   );
 
   menu_service.active_menu = menu;
@@ -47,7 +49,7 @@ menu_service.draw = function()
   local menu = menu_service.active_menu;
   if not menu then return end
 
-  for _, element in ipairs(menu:getElements())
+  for _, element in ipairs(menu.elements) do
     local color = { unpack(element.color) };
     if element == menu.active_element then
       color[1] = 1;
@@ -70,7 +72,7 @@ menu_service.handle_keypress = function(pressed_key)
   if not menu then return end
 
   local input_action
-  if (menu.active_element:getInputActions) then
+  if (menu.active_element.input_actions) then
     input_action = menu.active_element.input_actions[pressed_key];
   end
 

@@ -1,51 +1,53 @@
-local entity_service = {};
-local input_service = require('services.input');
 
-entity_service.entities = {}; -- Hold all entities
+-- From the example
 
-function entity_service.spawn(player_id, x, y, speed)
+local entity_service = {}
+local input_service = require('services.input')
+
+-- All player entities
+entity_service.entities = {}
+
+entity_service.spawn = function(player_id, x_pos, y_pos)
   return {
-    color = {1,1,1,1},
+    -- TODO: We'll add a color randomizer later
+    color = {1, 1, 1, 1},
     id = player_id,
+    -- TODO: We'll add a shape randomizer later too
     shape = love.physics.newPolygonShape(0, 0, 50, 0, 50, 50, 0, 50),
-    x = x,
-    y = y,
-    speed = speed
-  };
+    x_pos = x_pos,
+    y_pos = y_pos
+  }
 end
 
-function entity_service.draw(entity)
-  love.graphics.setColor(entity.color);
-  local point = { entity.shape:getPoints() };
-  for i, point in ipairs(points) do
-    if i % 2 == 1 then
-      points[i] = point + entity.x;
+entity_service.draw = function(entity)
+  love.graphics.setColor(entity.color)
+  local points = { entity.shape:getPoints() }
+  for idx, point in ipairs(points) do
+    if idx % 2 == 1 then
+      points[idx] = point + entity.x_pos
     else
-      points[i] = point + entity.y;
+      points[idx] = point + entity.y_pos
     end
   end
-  love.graphics.polygon('line', points);
+  love.graphics.polygon('line', points)
 end
 
-function entity_service.move(player_id, x, y)
-  local player =  entity_service.entities[player_id];
+entity_service.move = function()
+  local player = entity_service.entities[entity_service.player_id]
 
   -- Don't let the player press up and down at the same time
   if input_service.up and not input_service.down then
-    player.y = player.y - player.speed;
+    player.y_pos = player.y_pos - 2
   elseif input_service.down and not input_service.up then
-    player.y = player.y + player.speed;
+    player.y_pos = player.y_pos + 2
   end
 
   -- Don't let the player press left and right at the same time
   if input_service.left and not input_service.right then
-    player.x = player.x - player.speed;
+    player.x_pos = player.x_pos - 2
   elseif input_service.right and not input_service.left then
-    player.x = player.x + player.speed;
+    player.x_pos = player.x_pos + 2
   end
-  end
-
 end
 
-
-return entity_service;
+return entity_service

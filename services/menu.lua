@@ -43,4 +43,42 @@ function menu_service.update()
   menu.update();
 end
 
+menu_service.draw = function()
+  local menu = menu_service.active_menu;
+  if not menu then return end
+
+  for _, element in ipairs(menu:getElements())
+    local color = { unpack(element.color) };
+    if element == menu.active_element then
+      color[1] = 1;
+      color[2] = 1;
+      color[3] = 1;
+      color[4] = 1;
+    end
+    love.graphics.print(
+      { color, element.text },
+      math.floor(element.pos_x * window_width),
+      math.floor(element.pos_y * window_height),
+      0,
+      2
+    );
+  end
+end
+
+menu_service.handle_keypress = function(pressed_key)
+  local menu = menu_service.active_menu;
+  if not menu then return end
+
+  local input_action
+  if (menu.active_element:getInputActions) then
+    input_action = menu.active_element.input_actions[pressed_key];
+  end
+
+  input_action = input_action or menu.input_actions[pressed_key];
+
+  if not input_action then return end
+
+  input_action(menu);
+end
+
 return menu_service;

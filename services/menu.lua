@@ -4,7 +4,9 @@ local window_width, window_height = love.graphics.getDimensions();
 
 -- List of menus
 local menus = {
-
+  ['main-menu'] = require('menus.main-menu'),
+  ['client-lobby'] = require('menus.client-lobby'),
+  ['server-lobby'] = require('menus.server-lobby')
 };
 
 -- the loaded menu table
